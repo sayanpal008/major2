@@ -1,8 +1,12 @@
+import os
+Active_key = os.getenv('Active_Key')
+Username = os.getenv('Username')
+
 from telegram.ext import Updater, MessageHandler, Filters
 
 from Adafruit_IO import Client
  
-aio = Client('sayanpal008','aio_AvqX89bt2rj6EdJjUcTvkuGRg5gH')
+aio = Client(Username,Active_key)
  
 def sayan1(bot,update):
   chat_id = bot.message.chat_id
@@ -37,7 +41,6 @@ def main(bot,update):
   elif a =="turn off fan":
     sayan4(bot,update) 
      
-bot_token =  '1949923952:AAEkScKdoh9UeJi0VCSTxYm7SkGOLEsFPso'
 u = Updater(bot_token,use_context=True)
 dp = u.dispatcher
 dp.add_handler(MessageHandler(Filters.text,main))
